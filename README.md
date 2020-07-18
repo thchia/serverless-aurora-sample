@@ -1,6 +1,6 @@
 # Serverless Aurora with Data API
 
-This template shows the basic setup for deploy a stack with serverless Aurora on AWS. Featuring:
+This template shows the basic setup to deploy a stack with serverless Aurora on AWS. Featuring:
 
 - Data API to remove the need for Lambda VPC configuration.
 - [data-api-client](https://github.com/jeremydaly/data-api-client) to abstract away the verbosity of using the Data API directly.
