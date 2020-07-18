@@ -1,0 +1,25 @@
+Type: AWS::RDS::DBCluster
+Properties:
+  DBClusterIdentifier: ${self:provider.environment.AURORA_CLUSTER_ID}
+  MasterUsername:
+    Fn::Join:
+      - ''
+      - - '{{resolve:secretsmanager:'
+        - Ref: RDSSecrets
+        - ':SecretString:username}}'
+  MasterUserPassword:
+    Fn::Join:
+      - ''
+      - - '{{resolve:secretsmanager:'
+        - Ref: RDSSecrets
+        - ':SecretString:password}}'
+  DatabaseName: ${self:provider.environment.AURORA_DB_NAME}
+  Engine: aurora
+  EngineMode: serverless
+  EnableHttpEndpoint: true # Data API
+  ScalingConfiguration:
+    AutoPause: true
+    MaxCapacity: 2
+    MinCapacity: 1
+    SecondsUntilAutoPause: 300
+  StorageEncrypted: true

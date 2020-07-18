@@ -1,0 +1,5 @@
+handler: handler.read
+events:
+  - http:
+      path: users
+      method: get
